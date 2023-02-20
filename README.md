@@ -20,7 +20,8 @@ HighLoad system project
 
 ### Целевая аудитория 
 [Статистика](https://xmldatafeed.com/statistika-youtube-stoimost-aktivnye-polzovateli-luchshie-kanaly-i-tendenczii-2022/)
-и еще источник [статистики](https://www.businessofapps.com/data/youtube-statistics/)
+(доп. источники [источник](https://www.businessofapps.com/data/youtube-statistics/), 
+[источник](https://ictnews.uz/03/11/2022/youtube/))
 показывают, что более 2,6 миллиардов активных пользователей в месяц, а дневная аудитория составляет 122 млн.
 
 В целях упрощения CDN возьмем только топ-3 страны с количеством пользователей онлайн.
