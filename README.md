@@ -22,7 +22,10 @@ HighLoad system project
 [Статистика](https://xmldatafeed.com/statistika-youtube-stoimost-aktivnye-polzovateli-luchshie-kanaly-i-tendenczii-2022/)
 (доп. источники [источник](https://www.businessofapps.com/data/youtube-statistics/), 
 [источник](https://ictnews.uz/03/11/2022/youtube/))
-показывают, что более 2,6 миллиардов активных пользователей в месяц, а дневная аудитория составляет 122 млн.
+показывают, что более 2,6 миллиардов активных пользователей в месяц.
+
+В связи с отсутствием данных примем допущение о DAU на основе [данных](https://www.statista.com/statistics/256896/frequency-with-which-us-internet-users-visit-youtube/).
+98% - 2600 млн, а DAU - 62% - 1644 млн. То есть примем пропорцию между DAU и MAU для всех стран на основе соотношении этих параметров для 1 страны.
 
 В целях упрощения CDN возьмем только топ-3 страны с количеством пользователей онлайн.
 
@@ -38,7 +41,7 @@ HighLoad system project
 
 Промасштабируем дневную аудиторию с упрощением:
 
-834 / 2600 * 122 = 39 млн
+834 / 2600 * 1644 = 527 млн
 
 ## 2. Расчет нагрузки <a name="2"></a>
 
