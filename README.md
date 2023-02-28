@@ -67,21 +67,21 @@ HighLoad system project
 
 [Пользовтаели тратят 23,2 часа в месяц на просмотр видео.](https://lpgenerator.ru/blog/2021/10/07/statistika-youtube-kotoruyu-nuzhno-znat-v-2021/#:~:text=YouTube%20%E2%80%94%20%D0%BB%D1%83%D1%87%D1%88%D0%B5%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%B2%D0%BE%D0%B9%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B8%20%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE.%20%D0%A1%D1%80%D0%B5%D0%B4%D0%BD%D0%B8%D0%B9%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%20%D1%82%D1%80%D0%B0%D1%82%D0%B8%D1%82%2023%2C2%20%D1%87%D0%B0%D1%81%D0%B0%20%D0%B2%20%D0%BC%D0%B5%D1%81%D1%8F%D1%86%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BD%D1%82%D0%B0)
 
-> 23,2 * 60 / 30 = 46,4 минут просмотра в день.
+> 23,2 * 60 / 30 = 46,4 - минут просмотра в день.
 
 [Cредняя длительность видео на YouTube 8.4 минуты.](https://exlibris.ru/news/statistika-youtube-2019-infografika/#:~:text=%D0%9F%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B8%20%D1%81%D0%BC%D0%BE%D1%82%D1%80%D1%8F%D1%82%20%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE%20%D0%BA%D0%B0%D0%B6%D0%B4%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C&text=%D0%92%20%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B5%D0%BC%20%D0%BD%D0%B0%20%D0%BA%D0%B0%D0%B6%D0%B4%D0%BE%D0%B3%D0%BE%20%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D0%BA%D0%B0,%D0%BF%D0%BE%D1%8D%D1%82%D0%BE%D0%BC%D1%83%20%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B8%D0%B5%20%D0%BF%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B5%20%D0%B2%D0%BF%D0%B5%D1%87%D0%B0%D1%82%D0%BB%D1%8F%D1%8E%D1%89%D0%B8%D0%B5.)
 
-> 46.4 / 8.4 = 5.5 видео просматривает один пользователь за сутки.
+> 46.4 / 8.4 = 5.5 - видео просматривает один пользователь за сутки.
 
-[Пользователи в стреднем ставят 4 лайка на 100 видео.](https://tubularlabs.com/blog/3-metrics-youtube-success/#:~:text=Tips%20for%20YouTube%20Success%3A%20Aim%20for%20at%20least%2040%20Likes%20for%20every%201000%20views%20of%20your%20video)
+[Пользователи в среднем ставят 4 лайка на 100 видео.](https://tubularlabs.com/blog/3-metrics-youtube-success/#:~:text=Tips%20for%20YouTube%20Success%3A%20Aim%20for%20at%20least%2040%20Likes%20for%20every%201000%20views%20of%20your%20video)
 
 > 5.5 * 30 = 165 - среднее число просмотров в месяц.
 >
-> 165 / 100 * 4 = 6 лайков в месяц ставит пользователь.
+> 165 / 100 * 4 = 6 - лайков в месяц ставит пользователь.
 
 [Пользователи в среднем оставляют 5 комментариев на 1000 видео.](https://tubularlabs.com/blog/3-metrics-youtube-success/#:~:text=Tips%20for%20YouTube%20Success%3A%20Aim%20for%20at%20least%205%20comments%20for%20every%201000%20video%20views)
 
-> 165 / 1000 * 5 = 1 - комметарий оставляет пользователь в месяц.
+> 165 / 1000 * 5 = 1 - комментариев оставляет пользователь в месяц.
 
 [Пользователи в среднем загружают 500 видео в минуту](https://exlibris.ru/news/statistika-youtube-2019-infografika/#:~:text=500%20%D1%87%D0%B0%D1%81%D0%BE%D0%B2%20%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE%20%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B6%D0%B0%D0%B5%D1%82%D1%81%D1%8F%20%D0%BD%D0%B0%20YouTube%20%D0%BF%D0%BE%20%D0%B2%D1%81%D0%B5%D0%BC%D1%83%20%D0%BC%D0%B8%D1%80%D1%83%20%D0%B2%D1%81%D0%B5%D0%B3%D0%BE%20%D0%B7%D0%B0%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%D1%83.)
 
@@ -173,13 +173,13 @@ HighLoad system project
 
 ##### Запросы на Nginx
 
-> 400 336 + 224 272 = 624 608 млн запросов в сутки.
+> 400 336 + 224 272 = 624 608 млн - запросов в сутки.
 >
 > 624 608 / (24 * 60 * 60) = 7 229 259 RPS.
 
 ##### Запросы на бэк
 
-> 35 621 + 18 864 = 54 485 млн запросов в сутки.
+> 35 621 + 18 864 = 54 485 млн - запросов в сутки.
 
 > 54 485 / (24 * 60 * 60) = 630 613 RPS.
 
@@ -196,7 +196,7 @@ HighLoad system project
 > 3.355 млн / (24 * 60 * 60) = 166 RPS.
 
 
-> 6 928 615 / 30 / 24 / 60 / 60 = 2,67 = 3 видео в секунду ставится на загрузку.
+> 6 928 615 / 30 / 24 / 60 / 60 = 2,67 = 3 - видео в секунду ставится на загрузку.
 >
 > 3 * 2 = 6 RPS.
 
