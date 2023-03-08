@@ -1,9 +1,13 @@
 # Binaries for programs and plugins
+*build
+build
+.idea
 *.exe
 *.exe~
 *.dll
 *.so
 *.dylib
+venv
 
 # Test binary, built with `go test -c`
 *.test
