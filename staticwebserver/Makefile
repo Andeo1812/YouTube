@@ -12,7 +12,7 @@ build-docker:
 	docker build -f ./docker/Dockerfile --tag $(IMAGE) .
 
 docker-run:
-	docker run -p $(PORT):$(PORT) --name $(CONTAINER) -t $(IMAGE)
+	docker run --memory 2G -p $(PORT):$(PORT) --name $(CONTAINER) -t $(IMAGE)
 
 docker-stop:
 	docker stop $(CONTAINER)
@@ -25,7 +25,7 @@ build-docker-nginx:
 	docker build --no-cache -t nginx -f ./docker/nginx.Dockerfile .
 
 docker-run-nginx:
-	docker run -p $(NGINX):$(NGINX) --name nginx -t nginx
+	docker run --memory 2G -p $(NGINX):$(NGINX) --name nginx -t nginx
 
 docker-stop-nginx:
 	docker stop nginx

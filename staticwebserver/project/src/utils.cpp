@@ -7,14 +7,14 @@
 #include "utils.hpp"
 
 std::string NotImplemented() {
-    return NOT_IMPLEMENTED;
+    return std::string{NOT_IMPLEMENTED};
 }
 std::string NotFound() {
-    return NOT_FOUND;
+    return std::string{NOT_FOUND};
 }
 
 std::string Head() {
-    return RESPONSE_OK + GetDate() + "\r\n";
+    return std::string{RESPONSE_OK + GetDate() + "\r\n"};
 }
 
 std::string GetDate() {

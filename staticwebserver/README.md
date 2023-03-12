@@ -97,6 +97,8 @@ OK
 
 [Инструмент](https://github.com/wg/wrk)
 
+Все тесты проведены в Docker c ограничением использования оперативной памяти в 2 GB
+
 1. **nginx сервер** 
 ```bash
 make nginx-bench
@@ -107,11 +109,12 @@ wrk -t12 -c400 -d30s 'http://127.0.0.1:8888/tests/splash.css'
 Running 30s test @ http://127.0.0.1:8888/tests/splash.css
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    29.26ms   45.05ms 314.87ms   86.10%
-    Req/Sec     2.59k     1.29k    7.16k    61.99%
-  885713 requests in 30.10s, 81.55GB read
-Requests/sec:  29427.97
-Transfer/sec:      2.71GB
+    Latency    77.12ms  111.50ms 520.43ms   81.84%
+    Req/Sec     2.26k     1.50k   10.19k    52.61%
+  559871 requests in 30.09s, 51.55GB read
+Requests/sec:  18604.93
+Transfer/sec:      1.71GB
+
 ```
 2. **static-web-server**
 ```bash
@@ -119,16 +122,19 @@ make bench-static-web-server
 ```
 Результат:  
 ```bash
+wrk -t12 -c400 -d30s 'http://127.0.0.1:8080/tests/splash.css'
 Running 30s test @ http://127.0.0.1:8080/tests/splash.css
   12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     3.66ms   12.68ms 417.05ms   99.04%
-    Req/Sec     2.02k   650.98     5.47k    70.14%
-  719802 requests in 30.10s, 66.20GB read
-Requests/sec:  23916.82
-Transfer/sec:      2.20GB
+    Latency   232.06ms  327.64ms   1.84s    79.82%
+    Req/Sec     1.17k   452.85     3.36k    67.21%
+  417713 requests in 30.09s, 38.42GB read
+  Socket errors: connect 0, read 0, write 0, timeout 198
+Requests/sec:  13880.40
+Transfer/sec:      1.28GB
+
 ```
 
 3. **Сравнительный анализ**
 
-> 23916.82 / 29427.97 * 100 % = 81.27 [%] - дает кастомный веб сервер по сравнению c Nginx
+> 13880.40 / 18604.93 * 100 = 74.6 [%] - дает кастомный веб сервер по сравнению c Nginx
