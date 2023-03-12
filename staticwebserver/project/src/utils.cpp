@@ -1,8 +1,10 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <ctime>
+#include <chrono>
 
-#include <utils.hpp>
+#include "utils.hpp"
 
 std::string NotImplemented() {
     std::string response = NOT_IMPLEMENTED;
@@ -14,19 +16,25 @@ std::string NotFound() {
 }
 
 std::string Head() {
-    return RESPONSE_OK + GetDate() + "\r\n";
+    std::string response = RESPONSE_OK;
+    response += GetDate() + "\r\n";
+    return response;
 }
 
 std::string GetDate() {
     std::time_t rawTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+
     std::string date = ctime(&rawTime);
+
     std::string formatedDate = date.substr(0, 3) + ", " + date.substr(8, 3) + date.substr(4, 4) + date.substr(20, 4)
-        + " " + date.substr(11, 8);
+                               + " " + date.substr(11, 8);
+
     return formatedDate;
 }
 
 std::string DecodeURL(const std::string &url) {
     std::string decoded_url;
+
     for (int i = 0; i < url.size(); i++) {
         if (url[i] == '%') {
             decoded_url += static_cast<char>(strtoll(url.substr(i + 1, 2).c_str(), nullptr, 16));
@@ -35,38 +43,50 @@ std::string DecodeURL(const std::string &url) {
             decoded_url += url[i];
         }
     }
+
     return decoded_url;
 }
-std::string DeadFile(const std::string &path) {
+std::string ReadFile(const std::string &path) {
     std::ifstream file(path, std::ios::in | std::ios::binary);
+
     std::stringstream fl;
     if (file.is_open()) {
         fl << file.rdbuf();
     }
 
     file.close();
+
     return fl.str();
 }
 
 std::vector<std::string> Tokenize(const std::string &s, const std::string &del = " ") {
     std::vector<std::string> res;
+
     int start = 0;
     int end = s.find(del);
+
     while (end != -1) {
         res.push_back(s.substr(start, end - start));
+
         start = end + del.size();
         end = s.find(del, start);
     }
+
     res.push_back(s.substr(start, end - start));
+
     return res;
 }
 std::string StripQueryParams(const std::string &s) {
     auto tokens = Tokenize(s, "/");
+
     auto last = tokens[tokens.size() - 1];
+
     auto checkParams = last.rfind('?');
+
     if (checkParams != -1) {
         last = last.substr(0, checkParams);
     }
+
     std::string newPath;
     for (auto i = 0; i < tokens.size() - 1; i++) {
         newPath += tokens[i] + "/";

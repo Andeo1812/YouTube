@@ -35,26 +35,26 @@ bool Server::Init() {
 
 void Server::Run() {
     while (true) {
-        // Accept the connection
+        //  Accept the connection
         socklen_t addr_size = sizeof(this->clientAddr);
         this->clientSocket = accept(serverSocket, (struct sockaddr *) &this->clientAddr, &addr_size);
 
-        // Displaying the IP of the peer app
+        //  Displaying the IP of the peer app
         char peerIP[INET_ADDRSTRLEN] = {0};
 
         if (!inet_ntop(AF_INET, &this->clientAddr.sin_addr, peerIP, sizeof(peerIP))) {
-            std::cout << "Failed to get the IP of the client" << std::endl;
+            //  std::cout << "Failed to get the IP of the client" << std::endl;
             return;
         }
 
-        std::cout << "Accepted connection with " << peerIP << std::endl;
+        //  std::cout << "Accepted connection with " << peerIP << std::endl;
 
         this->queueMutex.lock();
         this->requestQueue.push(clientSocket);
         this->cv.notify_one();
         this->queueMutex.unlock();
 
-        std::cout << "Pushed request to the queue" << std::endl;
+        //  std::cout << "Pushed request to the queue" << std::endl;
     }
 }
 
@@ -65,7 +65,6 @@ void Server::handleRequest() {
     while (true) {
         // Pop the client socket from the queue
         lock.lock();
-
         this->cv.wait(lock, [this]() { return !this->requestQueue.empty(); });
         client_socket = this->requestQueue.front();
         this->requestQueue.pop();
@@ -73,13 +72,14 @@ void Server::handleRequest() {
 
         char req[2 * REQ_SIZE];
         recv(client_socket, req, sizeof(req), 0);
+
         HTTPHandler requestHandler;
-        std::cout << "Created handler" << std::endl;
+        //  std::cout << "Created handler" << std::endl;
 
         std::string reply = requestHandler.handle(req);
-        std::cout << reply << std::endl;
+        //  std::cout << reply << std::endl;
 
-        std::cout << "Client Request : \n" << req << std::endl;
+        //  std::cout << "Client Request : \n" << req << std::endl;
         send(client_socket, reply.c_str(), reply.size(), 0);
 
         // Closing connection
@@ -90,6 +90,7 @@ void Server::handleRequest() {
 bool Server::loadConfig() {
     std::fstream configFile;
     configFile.open("../configs/config", std::ios::in);
+
     if (!configFile.is_open()) {
         std::cerr << "Warning : Failed to load configuration file" << std::endl;
 

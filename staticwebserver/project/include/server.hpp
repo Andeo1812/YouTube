@@ -6,9 +6,10 @@
 #include <netinet/in.h>
 #include <iostream>
 #include <thread>
-#include "constants.hpp"
 #include <cstring>
 #include <condition_variable>
+
+#include "constants.hpp"
 
 
 class Server {

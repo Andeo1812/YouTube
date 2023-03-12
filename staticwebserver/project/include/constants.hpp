@@ -6,7 +6,7 @@ const int POOL_SIZE = 50;
 const int PORT = 8080;
 const int CNT_CONN = 400;
 const int REQ_SIZE = 1024;
-//
+
 const int read_size = 1024;
 const std::string HEAD = "HEAD";
 const std::string GET = "GET";
