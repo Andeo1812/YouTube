@@ -2,34 +2,30 @@
 #include <fstream>
 #include <sstream>
 #include <ctime>
-#include <chrono>
+#include <iostream>
 
 #include "utils.hpp"
 
 std::string NotImplemented() {
-    std::string response = NOT_IMPLEMENTED;
-    return response;
+    return NOT_IMPLEMENTED;
 }
 std::string NotFound() {
-    std::string response = NOT_FOUND;
-    return response;
+    return NOT_FOUND;
 }
 
 std::string Head() {
-    std::string response = RESPONSE_OK;
-    response += GetDate() + "\r\n";
-    return response;
+    return RESPONSE_OK + GetDate() + "\r\n";
 }
 
 std::string GetDate() {
-    std::time_t rawTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    std::time_t t = std::time(nullptr);
+    std::tm tm = *std::localtime(&t);
 
-    std::string date = ctime(&rawTime);
+    char dateMessage[24];
 
-    std::string formatedDate = date.substr(0, 3) + ", " + date.substr(8, 3) + date.substr(4, 4) + date.substr(20, 4)
-                               + " " + date.substr(11, 8);
+    std::strftime(dateMessage, sizeof(dateMessage), "%a, %d %b %Y %T %Z", &tm);
 
-    return formatedDate;
+    return std::string{dateMessage};
 }
 
 std::string DecodeURL(const std::string &url) {
@@ -38,6 +34,7 @@ std::string DecodeURL(const std::string &url) {
     for (int i = 0; i < url.size(); i++) {
         if (url[i] == '%') {
             decoded_url += static_cast<char>(strtoll(url.substr(i + 1, 2).c_str(), nullptr, 16));
+
             i += 2;
         } else {
             decoded_url += url[i];
@@ -98,21 +95,36 @@ std::string StripQueryParams(const std::string &s) {
 
 std::string ParseMime(const std::string &s) {
     auto xs = s.substr(s.rfind('.'), s.size());
+
     if (xs == ".html") {
         return "text/html";
-    } else if (xs == ".js") {
+    }
+
+    if (xs == ".js") {
         return "application/javascript";
-    } else if (xs == ".css") {
+    }
+
+    if (xs == ".css") {
         return "text/css";
-    } else if (xs == ".jpg") {
+    }
+
+    if (xs == ".jpg") {
         return "image/jpeg";
-    } else if (xs == ".jpeg") {
+    }
+
+    if (xs == ".jpeg") {
         return "image/jpeg";
-    } else if (xs == ".png") {
+    }
+
+    if (xs == ".png") {
         return "image/png";
-    } else if (xs == ".gif") {
+    }
+
+    if (xs == ".gif") {
         return "image/gif";
-    } else if (xs == ".swf") {
+    }
+
+    if (xs == ".swf") {
         return "application/x-shockwave-flash";
     }
 

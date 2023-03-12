@@ -8,7 +8,7 @@ nginx запускается на `8888` порту, веб-сервер на `8
 ### Запуск сервера
 ```bash
 make build-docker
-make docker-Run
+make docker-run
 ```
 Остановка сервера:  
 ```bash
@@ -92,7 +92,6 @@ Server header exists ... ok
 Ran 24 tests in 0.096s
 
 OK
-
 ```
 ## Запуск нагрузочного тестирования  
 
@@ -104,7 +103,15 @@ make nginx-bench
 ```
 Результат:  
 ```bash
-in proccess
+wrk -t12 -c400 -d30s 'http://127.0.0.1:8888/tests/splash.css'
+Running 30s test @ http://127.0.0.1:8888/tests/splash.css
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    29.26ms   45.05ms 314.87ms   86.10%
+    Req/Sec     2.59k     1.29k    7.16k    61.99%
+  885713 requests in 30.10s, 81.55GB read
+Requests/sec:  29427.97
+Transfer/sec:      2.71GB
 ```
 2. **static-web-server**
 ```bash
@@ -112,15 +119,16 @@ make bench-static-web-server
 ```
 Результат:  
 ```bash
-wrk -t24 -c800 -d30s 'http://127.0.0.1:8080/tests/splash.css'
 Running 30s test @ http://127.0.0.1:8080/tests/splash.css
-  24 threads and 800 connections
+  12 threads and 400 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   780.62ms  620.85ms   1.82s    45.95%
-    Req/Sec     4.82     15.64   200.00     99.40%
-  330 requests in 30.10s, 31.08MB read
-  Socket errors: connect 0, read 4257, write 2923383, timeout 256
-Requests/sec:     10.96
-Transfer/sec:      1.03MB
-
+    Latency     3.66ms   12.68ms 417.05ms   99.04%
+    Req/Sec     2.02k   650.98     5.47k    70.14%
+  719802 requests in 30.10s, 66.20GB read
+Requests/sec:  23916.82
+Transfer/sec:      2.20GB
 ```
+
+3. **Сравнительный анализ**
+
+> 23916.82 / 29427.97 * 100 % = 81.27 [%] - дает кастомный веб сервер по сравнению c Nginx

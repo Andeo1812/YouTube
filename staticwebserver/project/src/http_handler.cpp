@@ -51,6 +51,7 @@ std::string GetResponse(std::stringstream &requestLine, std::string &url, bool i
         // for now we assume that every time a file doesn't open, it's a bad request
         return NotFound();
     }
+
     // If everything is good we load the file
     auto res = ReadFile(url);
 
