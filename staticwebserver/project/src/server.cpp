@@ -74,12 +74,9 @@ void Server::handleRequest() {
         recv(client_socket, req, sizeof(req), 0);
 
         HTTPHandler requestHandler;
-        //  std::cout << "Created handler" << std::endl;
 
         std::string reply = requestHandler.handle(req);
-        //  std::cout << reply << std::endl;
 
-        //  std::cout << "Client Request : \n" << req << std::endl;
         send(client_socket, reply.c_str(), reply.size(), 0);
 
         // Closing connection

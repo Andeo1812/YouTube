@@ -1,4 +1,3 @@
-#include <sstream>
 #include <fstream>
 #include <iostream>
 #include <algorithm>
@@ -15,16 +14,14 @@ std::string GetResponse(std::stringstream &requestLine, std::string &url, bool i
     std::getline(requestLine, version, ' ');
 
     if (version != HTTP_1_1 && version != HTTP_1_0) {
-        //  std::cout << version << "\n";
-
-        std::string response = VERSION_NOT_SUPPORTED;
-        return response;
+        return VERSION_NOT_SUPPORTED;
     }
 
     url = DecodeURL(url);
     url = StripQueryParams(url);
 
-    url.insert(0, ".."); // httptest will contain all the files the server serves
+    //  httptest will contain all the files the server serves
+    url.insert(0, "..");
 
     bool is_dir = false;
     if (std::filesystem::is_directory(url)) {
@@ -32,11 +29,12 @@ std::string GetResponse(std::stringstream &requestLine, std::string &url, bool i
         is_dir = true;
     }
 
-    // Loading the requested file
+    //  Loading the requested file
     std::fstream targetFile;
     targetFile.open(url, std::ios::in);
 
-    if (!targetFile.is_open()) {// if it doesn't open we handle the error
+    //  If it doesn't open we handle the error
+    if (!targetFile.is_open()) {
         if (is_dir) {
             std::cerr << "Failed to load index.html in dir path" << std::endl;
 
@@ -47,15 +45,16 @@ std::string GetResponse(std::stringstream &requestLine, std::string &url, bool i
             return response;
         }
 
-        //  std::cerr << "Failed to load the file" << std::endl;
-        // for now we assume that every time a file doesn't open, it's a bad request
+        std::cerr << "Failed to load the file" << std::endl;
+
+        //  For now we assume that every time a file doesn't open, it's a bad request
         return NotFound();
     }
 
     // If everything is good we load the file
     auto res = ReadFile(url);
 
-    // Preparing and sending the response
+    //  Preparing and sending the response
     std::string response = Head();
     auto length = res.size();
 
