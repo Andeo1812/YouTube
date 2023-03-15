@@ -2,7 +2,7 @@
 
 #include <string>
 
-const int POOL_SIZE = 50;
+const int POOL_SIZE = 16;
 const int PORT = 8080;
 const int CNT_CONN = 400;
 const int REQ_SIZE = 1024;

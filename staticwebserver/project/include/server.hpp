@@ -16,10 +16,11 @@ class Server {
 public:
     Server() = delete;
 
-    explicit Server(size_t poolSize = POOL_SIZE, int port = PORT, int countConn = CNT_CONN)
-    : poolSize(poolSize), serverPort(port), queueConnections(CNT_CONN) {
+    explicit Server(size_t poolSize = POOL_SIZE, int port = PORT, int countConn = CNT_CONN) {
         this->serverSocket = 0;
         this->clientSocket = 0;
+
+        this->loadConfig();
 
         memset(&this->serverAddr, 0, sizeof(struct sockaddr_in));
         memset(&this->clientAddr, 0, sizeof(struct sockaddr_in));

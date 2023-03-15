@@ -8,11 +8,10 @@
 #include <http_handler.hpp>
 
 bool Server::Init() {
-    this->loadConfig();
-
     this->serverSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (serverSocket == -1) {
         std::cerr << "Can not create socket" << std::endl;
+
         return {};
     }
 

@@ -3,7 +3,7 @@
 #include <server.hpp>
 
 int main() {
-    Server server(POOL_SIZE, PORT);
+    Server server(POOL_SIZE, PORT, CNT_CONN);
     if (!server.Init()) {
         return 1;
     }
