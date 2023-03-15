@@ -1,42 +1,60 @@
 # Сервер для отдачи статики
+
 ## Архитектура и ЯП
+
 `С++ thread pool`
 
 ## Сборка
+
 nginx запускается на `8888` порту, веб-сервер на `8080`.  
-важно проверить, чтобы порты были свободны!  
+важно проверить, чтобы порты были свободны!
+
 ### Запуск сервера
+
 ```bash
 make build-docker
 make docker-run
 ```
-Остановка сервера:  
+
+Остановка сервера:
+
 ```bash
 make docker-stop
 ```
+
 Удаление контейнера(чтобы запустить новый):
+
 ```bash
 make docker-rm
 ```
+
 ### Запуск nginx
+
 ```bash
 make build-docker-nginx
 make docker-Run-nginx
 ```
+
 Остановка nginx(a):
+
 ```bash
 make docker-stop-nginx
 ```
+
 Удаление контейнера nginx(a)(чтобы запустить новый):
+
 ```bash
 make docker-rm-nginx
 ```  
+
 ### Запуск функциональных тестов
+
 ```bash
 make func-test
 ```
 
-Результат:  
+Результат:
+
 ```bash
 ./functest.py
 test_directory_index (__main__.HttpServer)
@@ -93,17 +111,21 @@ Ran 24 tests in 0.096s
 
 OK
 ```
-## Запуск нагрузочного тестирования  
+
+## Запуск нагрузочного тестирования
 
 [Инструмент](https://github.com/wg/wrk)
 
 Все тесты проведены в Docker c ограничением использования оперативной памяти в 2 GB
 
-1. **nginx сервер** 
+1. **nginx сервер - worker_processes 4**
+
 ```bash
 make nginx-bench
 ```
-Результат:  
+
+Результат:
+
 ```bash
 wrk -t12 -c400 -d30s 'http://127.0.0.1:8888/tests/splash.css'
 Running 30s test @ http://127.0.0.1:8888/tests/splash.css
@@ -116,11 +138,15 @@ Requests/sec:  18604.93
 Transfer/sec:      1.71GB
 
 ```
-2. **static-web-server**
+
+2. **static-web-server - thread pool 16**
+
 ```bash
 make bench-static-web-server
 ```
-Результат:  
+
+Результат:
+
 ```bash
 wrk -t12 -c400 -d30s 'http://127.0.0.1:8080/tests/splash.css'
 Running 30s test @ http://127.0.0.1:8080/tests/splash.css
@@ -138,3 +164,11 @@ Transfer/sec:      1.28GB
 3. **Сравнительный анализ**
 
 > 13880.40 / 18604.93 * 100 = 74.6 [%] - дает кастомный веб сервер по сравнению c Nginx
+
+4. **Динамика роста - RPS/count_workers**
+
+| **Count workers** | **Nginx [RPS]** | **Static WEB server [RPS]** |
+|-------------------|-----------------|-----------------------------|
+| 4                 | 17775.54        | 14432.26                    |
+| 8                 | 18826.28        | 14362.46                    |
+| 16                | 17169.51        | 14300.69                    |

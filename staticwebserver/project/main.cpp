@@ -4,7 +4,7 @@
 
 int main() {
     Server server(POOL_SIZE, PORT);
-    if(!server.Init()) {
+    if (!server.Init()) {
         return 1;
     }
 
