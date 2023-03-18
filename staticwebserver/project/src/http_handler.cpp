@@ -36,26 +36,24 @@ std::string GetResponse(std::stringstream &requestLine, std::string &url, bool i
     //  If it doesn't open we handle the error
     if (!targetFile.is_open()) {
         if (is_dir) {
-            std::cerr << "Failed to load index.html in dir path" << std::endl;
-
-            std::string response = FORBIDDEN;
             if (!is_head) {
-                response += FORBIDDEN_BODY;
+                return FORBIDDEN + FORBIDDEN_BODY;
             }
-            return response;
+
+            return FORBIDDEN;
         }
 
-        std::cerr << "Failed to load the file" << std::endl;
-
         //  For now we assume that every time a file doesn't open, it's a bad request
-        return NotFound();
+        return NOT_FOUND;
     }
+
+    targetFile.close();
 
     // If everything is good we load the file
     auto res = ReadFile(url);
 
     //  Preparing and sending the response
-    std::string response = Head();
+    std::string response = RESPONSE_OK + GetDate() + "\r\n";;
     auto length = res.size();
 
     response = response + CONTENT_LENGTH + " " + std::to_string(length);;
@@ -86,12 +84,12 @@ std::string HTTPHandler::handle(const std::string &request) const {
     std::getline(requestLine, url, ' ');
 
     if (url.find("../") != std::string::npos) {
-        return NotFound();
+        return NOT_FOUND;
     }
 
     bool is_head = false;
     if (method != HEAD && method != GET) {
-        return NotImplemented();
+        return NOT_IMPLEMENTED;
     }
 
     if (method == HEAD) {

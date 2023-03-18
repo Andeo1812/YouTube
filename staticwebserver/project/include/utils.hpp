@@ -11,8 +11,5 @@ std::vector<std::string> Tokenize(const std::string &s, const std::string &del);
 std::string StripQueryParams(const std::string &s);
 
 std::string ParseMime(const std::string &s);
-std::string NotImplemented();
-std::string NotFound();
 
-std::string Head();
 std::string GetDate();

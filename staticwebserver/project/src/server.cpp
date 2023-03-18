@@ -42,24 +42,21 @@ void Server::Run() {
         char peerIP[INET_ADDRSTRLEN] = {0};
 
         if (!inet_ntop(AF_INET, &this->clientAddr.sin_addr, peerIP, sizeof(peerIP))) {
-            //  std::cout << "Failed to get the IP of the client" << std::endl;
             return;
         }
-
-        //  std::cout << "Accepted connection with " << peerIP << std::endl;
 
         this->queueMutex.lock();
         this->requestQueue.push(clientSocket);
         this->cv.notify_one();
         this->queueMutex.unlock();
-
-        //  std::cout << "Pushed request to the queue" << std::endl;
     }
 }
 
 void Server::handleRequest() {
     std::unique_lock<std::mutex> lock(this->queueMutex, std::defer_lock);
     int client_socket = -1;
+
+    HTTPHandler requestHandler;
 
     while (true) {
         // Pop the client socket from the queue
@@ -71,8 +68,6 @@ void Server::handleRequest() {
 
         char req[2 * REQ_SIZE];
         recv(client_socket, req, sizeof(req), 0);
-
-        HTTPHandler requestHandler;
 
         std::string reply = requestHandler.handle(req);
 
@@ -88,8 +83,6 @@ bool Server::loadConfig() {
     configFile.open("../configs/config", std::ios::in);
 
     if (!configFile.is_open()) {
-        std::cerr << "Warning : Failed to load configuration file" << std::endl;
-
         return {};
     }
 
@@ -107,23 +100,11 @@ bool Server::loadConfig() {
             lineNum++;
             continue;
         } else if (key == "pool_size") {
-            try {
-                this->poolSize = std::stoi(value);
-            } catch (std::exception &e) {
-                std::cerr << "Error : Can't set the pool size " << e.what() << std::endl;
-            }
+            this->poolSize = std::stoi(value);
         } else if (key == "port_number") {
-            try {
-                this->serverPort = std::stoi(value);
-            } catch (std::exception &e) {
-                std::cerr << "Error : Can't set the port number " << e.what() << std::endl;
-            }
+            this->serverPort = std::stoi(value);
         } else if (key == "backlog_size") {
-            try {
-                this->queueConnections = std::stoi(value);
-            } catch (std::exception &e) {
-                std::cerr << "Error : Can't set the backlog size " << e.what() << std::endl;
-            }
+            this->queueConnections = std::stoi(value);
         } else {
             std::cerr << "Warning : Invalid configuration key at line " << lineNum << std::endl;
         }

@@ -6,18 +6,6 @@
 
 #include "utils.hpp"
 
-std::string NotImplemented() {
-    return NOT_IMPLEMENTED;
-}
-
-std::string NotFound() {
-    return NOT_FOUND;
-}
-
-std::string Head() {
-    return RESPONSE_OK + GetDate() + "\r\n";
-}
-
 std::string GetDate() {
     std::time_t t = std::time(nullptr);
     std::tm tm = *std::localtime(&t);
