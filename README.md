@@ -259,4 +259,9 @@ Load video:
 
 ## 3. Логическая схема <a name="3"></a>
 
+![image](https://user-images.githubusercontent.com/88785411/227312134-c19dd3ed-0fa2-4af7-bd3f-cb5c9d5b6e2a.png)
+
+## 4. Физическая схема <a name="4"></a>
+
 In process...
+
