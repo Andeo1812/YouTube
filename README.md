@@ -327,4 +327,60 @@ Prometheus - cluster хранения метрик \
 
 ## 6. Схема проекта <a name="6"></a>
 
-In process ...
+![image](https://user-images.githubusercontent.com/88785411/232563228-2e9fef8d-a361-4bec-a961-e5ff2d005250.png)
+
+## 7. Список серверов <a name="7"></a>
+
+Для расположения такого колличества серверов можно воспользоваться услугами компании [Amazon](https://aws.amazon.com/ru/about-aws/global-infrastructure/regional-product-services/?p=ngi&loc=4), чьи дата-центры находятся по всему миру. Можно равномерно расположить сервера по ДЦ для увелечения стабильности. \
+Важно расположить сервера в центральной Азии из-за большой плотности насления и большого кол-ва бедных стран, что является причной преимущественно слабых и мобильных устройств, а так же плохой связи
+* США (Чикаго)
+* США (Калифорния)
+* Индия (Мумбаи)
+* Индия (Дели)
+* Индонезия (Джакарта)
+* Индонезия (Агатс)
+
+### Выделим типы серверов в датацентре
+* Nginx
+* Backend
+* Postgresql
+* Redis
+* Хранилища видео на SSD
+* Хранилища видео на HDD
+
+#### Конфигурация сервера Nginx
+* CPU 32
+* RAM 32 Gb
+* SSD 256 Gb
+
+#### Конфигурация сервера Backend
+* CPU 32
+* RAM 256 Gb
+* SSD 256 Gb
+
+#### Конфигурация сервера Postgresql
+* CPU 32
+* RAM 512 Gb
+* 8 HDD дисков по 8 Tb
+
+#### Конфигурация сервера Redis
+* CPU 32
+* RAM 256 Gb
+* SSD 256 Gb
+
+#### Конфигурация сервера Хранилища видео на SSD
+* CPU 32
+* RAM 128 Gb
+* 8 SSD дисков по 8 Tb
+
+#### Конфигурация сервера Хранилища видео на HDD
+* CPU 32
+* RAM 128 Gb
+* 8 HDD дисков по 8 Tb
+
+## 8. Источники <a name="8"></a>
+1. https://xmldatafeed.com/statistika-youtube-stoimost-aktivnye-polzovateli-luchshie-kanaly-i-tendenczii-2022/
+2. https://www.statista.com/statistics/256896/frequency-with-which-us-internet-users-visit-youtube/
+3. https://lpgenerator.ru/blog/2021/10/07/statistika-youtube-kotoruyu-nuzhno-znat-v-2021/
+4. https://aws.amazon.com/ru/about-aws/global-infrastructure/regional-product-services/?p=ngi&loc=4
+5. https://7youtube.ru/news/skolko-vesit-video.html
