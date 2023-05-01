@@ -260,7 +260,7 @@ Load video:
 
 ## 3. Логическая схема <a name="3"></a>
 
-![image](https://user-images.githubusercontent.com/88785411/231266235-87595f8d-1556-4ce6-953d-a500fdc18f0e.png)
+![image](https://user-images.githubusercontent.com/88785411/235462652-fdae67d6-8aea-48a6-a17a-833bbe497447.png)
 
 ## 4. Физическая схема <a name="4"></a>
 
@@ -291,17 +291,38 @@ Load video:
 
 ### Схемы хранения
 
-![image](https://user-images.githubusercontent.com/88785411/231280353-bc752f45-3530-4a79-8d57-cae84c5fa025.png)
+#### Сессии:
 
-Где: \
-Redis session - cluster хранения сессий \
-Storage video - cluster хранения самого видео \
-PostgreSQL video - шарды с данными о видео включая связи с другими сущностями
-PostgreSQL meta - шарды с метаинформацией о видео, например, тэги \
-PostgreSQL user - шарды с данными о пользователях, например личные данные, комменты, просмотры \
-Prometheus - cluster хранения метрик \
+Redis session - cluster хранения сессий 
 
-![image](https://user-images.githubusercontent.com/88785411/231275421-e30fe662-3a17-427c-a379-5906f5144965.png)
+
+#### Мониторинг:
+
+Prometheus hot - cluster хранения метрик \
+Prometheus cold - cluster хранения метрик 
+
+#### Read flow:
+
+Харды:
+
+Storage hot video - cluster хранения самого видео (горячие) \
+Storage cold video - cluster хранения самого видео (холодные)
+
+Aerospike video - шарды с данными о видео включая связи с другими сущностями (теги) \
+Aerospike video_stat - шарды с статистикой о видео \
+Aerospike user like - шарды с данными о активности пользователя \
+Aerospike user comment - шарды с данными о активности пользователя \
+Aerospike user view - шарды с данными о активности пользователя 
+
+#### Write flow:
+Харды:
+
+Storage hot video - cluster хранения самого видео (горячие) 
+
+Aerospike video - шарды с данными о видео включая связи с другими сущностями (теги) \
+Aerospike user like - шарды с данными о активности пользователя \
+Aerospike user comment - шарды с данными о активности пользователя \
+Aerospike user view - шарды с данными о активности пользователя 
 
 Система buckets внутри шардов признана для унификации обращений. Сначала определяется шард потом бакет в нем для обращения.
 
@@ -327,7 +348,7 @@ Prometheus - cluster хранения метрик \
 
 ## 6. Схема проекта <a name="6"></a>
 
-![image](https://user-images.githubusercontent.com/88785411/232563228-2e9fef8d-a361-4bec-a961-e5ff2d005250.png)
+![image](https://user-images.githubusercontent.com/88785411/235470258-ec7762ac-6cce-4bd0-871a-bc6014cbe94f.png)
 
 ## 7. Список серверов <a name="7"></a>
 
