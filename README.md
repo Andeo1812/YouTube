@@ -348,7 +348,7 @@ Aerospike user view - шарды с данными о активности по�
 
 ## 6. Схема проекта <a name="6"></a>
 
-![image](https://user-images.githubusercontent.com/88785411/235471780-7b4af761-0453-422f-a90d-5edb18d6aeef.png)
+![image](https://github.com/Andeo1812/YouTube/assets/88785411/164348ad-b1e8-4a02-8231-41bd3ae11b3c)
 
 ## 7. Список серверов <a name="7"></a>
 
